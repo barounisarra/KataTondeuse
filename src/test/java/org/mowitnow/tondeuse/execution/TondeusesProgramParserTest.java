@@ -59,7 +59,7 @@ public class TondeusesProgramParserTest {
 
     @Test
     void parse_EmptyLines_ThrowsIllegalArgumentException() {
-        InvalidFileDataException thrown = assertThrows(InvalidFileDataException.class, () -> new TondeusesProgramParser("emptyFile", Arrays.asList()));
+        InvalidFileDataException thrown = assertThrows(InvalidFileDataException.class, () -> new TondeusesProgramParser("emptyFile", List.of()));
         assertEquals("emptyFile est vide", thrown.getMessage());
     }
 
