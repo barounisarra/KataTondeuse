@@ -31,5 +31,4 @@ public class TondreRunner {
         programmeTondeuse.getInstructions().forEach(instruction -> instruction.accept(tondeuse, pelouseControl));
         tondeuses.add(tondeuse);
     }
-
 }

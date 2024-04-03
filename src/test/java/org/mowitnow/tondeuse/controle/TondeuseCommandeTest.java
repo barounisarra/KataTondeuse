@@ -17,13 +17,13 @@ public class TondeuseCommandeTest {
     public void constructorWithVarargs_ShouldCorrectlyAssignFields() {
         Position expectedPosition = new Position(1, 2);
         Orientation expectedOrientation = Orientation.NORTH;
-        Instruction[] expectedInstructions = {Instruction.AVANCER, Instruction.DROITE};
+        List<Instruction> expectedInstructions = List.of(Instruction.AVANCER, Instruction.DROITE);
 
         TondeuseCommande commande = new TondeuseCommande(expectedPosition, expectedOrientation, expectedInstructions);
 
         assertEquals(expectedPosition, commande.getPosition());
         assertEquals(expectedOrientation, commande.getOrientation());
-        assertTrue(Arrays.asList(expectedInstructions).containsAll(commande.getInstructions()));
+        assertTrue(expectedInstructions.containsAll(commande.getInstructions()));
     }
 
     @Test
@@ -42,7 +42,7 @@ public class TondeuseCommandeTest {
     @Test
     public void getPosition_ShouldReturnCorrectPosition() {
         Position expectedPosition = new Position(5, 5);
-        TondeuseCommande commande = new TondeuseCommande(expectedPosition, Orientation.SOUTH, (List<Instruction>) null);
+        TondeuseCommande commande = new TondeuseCommande(expectedPosition, Orientation.SOUTH, null);
 
         assertEquals(expectedPosition, commande.getPosition());
     }
@@ -50,7 +50,7 @@ public class TondeuseCommandeTest {
     @Test
     public void getOrientation_ShouldReturnCorrectOrientation() {
         Orientation expectedOrientation = Orientation.WEST;
-        TondeuseCommande commande = new TondeuseCommande(new Position(1, 1), expectedOrientation, (Instruction[]) null);
+        TondeuseCommande commande = new TondeuseCommande(new Position(1, 1), expectedOrientation, null);
 
         assertEquals(expectedOrientation, commande.getOrientation());
     }

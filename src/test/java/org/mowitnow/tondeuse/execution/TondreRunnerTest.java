@@ -16,6 +16,7 @@ import org.mowitnow.tondeuse.model.Position;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -33,7 +34,7 @@ class TondreRunnerTest {
         void given_tondeuse_orientation_nord_when_tondeuse_rotation_gauche_then_tondeuse_pointe_ouest() {
             Pelouse pelouse = new Pelouse(1, 1);
             PelouseControl pelouseControl = new PelouseControl(pelouse);
-            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.NORTH, Instruction.GAUCHE);
+            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.NORTH, Collections.singletonList(Instruction.GAUCHE));
             TondreRunner tondreRunner = new TondreRunner(() -> new PlanDeTonte(pelouseControl, Collections.singletonList(tondeuseCommande)));
 
             String positionsTondeuse = tondreRunner.runTousProgrammesTondeuses();
@@ -45,7 +46,7 @@ class TondreRunnerTest {
         void given_tondeuse_orientation_est_when_tondeuse_rotation_gauche_then_tondeuse_pointe_nord() {
             Pelouse pelouse = new Pelouse(1, 1);
             PelouseControl pelouseControl = new PelouseControl(pelouse);
-            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.EAST, Instruction.GAUCHE);
+            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.EAST, Collections.singletonList(Instruction.GAUCHE));
             TondreRunner tondreRunner = new TondreRunner(() -> new PlanDeTonte(pelouseControl, Collections.singletonList(tondeuseCommande)));
 
             String positionsTondeuse = tondreRunner.runTousProgrammesTondeuses();
@@ -57,7 +58,7 @@ class TondreRunnerTest {
         void given_tondeuse_orientation_sud_when_tondeuse_rotation_gauche_then_tondeuse_pointe_est() {
             Pelouse pelouse = new Pelouse(1, 1);
             PelouseControl pelouseControl = new PelouseControl(pelouse);
-            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.SOUTH, Instruction.GAUCHE);
+            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.SOUTH, Collections.singletonList(Instruction.GAUCHE));
             TondreRunner tondreRunner = new TondreRunner(() -> new PlanDeTonte(pelouseControl, Collections.singletonList(tondeuseCommande)));
 
             String positionsTondeuse = tondreRunner.runTousProgrammesTondeuses();
@@ -69,7 +70,7 @@ class TondreRunnerTest {
         void given_tondeuse_orientation_ouest_when_tondeuse_rotation_gauche_then_tondeuse_pointe_sud() {
             Pelouse pelouse = new Pelouse(1, 1);
             PelouseControl pelouseControl = new PelouseControl(pelouse);
-            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.WEST, Instruction.GAUCHE);
+            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.WEST, Collections.singletonList(Instruction.GAUCHE));
             TondreRunner tondreRunner = new TondreRunner(() -> new PlanDeTonte(pelouseControl, Collections.singletonList(tondeuseCommande)));
 
             String positionsTondeuse = tondreRunner.runTousProgrammesTondeuses();
@@ -81,7 +82,7 @@ class TondreRunnerTest {
         void given_tondeuse_orientation_nord_when_tondeuse_rotation_droite_then_tondeuse_pointe_est() {
             Pelouse pelouse = new Pelouse(1, 1);
             PelouseControl pelouseControl = new PelouseControl(pelouse);
-            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.NORTH, Instruction.DROITE);
+            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.NORTH, Collections.singletonList(Instruction.DROITE));
             TondreRunner tondreRunner = new TondreRunner(() -> new PlanDeTonte(pelouseControl, Collections.singletonList(tondeuseCommande)));
 
             String positionsTondeuse = tondreRunner.runTousProgrammesTondeuses();
@@ -93,7 +94,7 @@ class TondreRunnerTest {
         void given_tondeuse_orientation_est_when_tondeuse_rotation_droite_then_tondeuse_pointe_sud() {
             Pelouse pelouse = new Pelouse(1, 1);
             PelouseControl pelouseControl = new PelouseControl(pelouse);
-            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.EAST, Instruction.DROITE);
+            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.EAST, Collections.singletonList(Instruction.DROITE));
             TondreRunner tondreRunner = new TondreRunner(() -> new PlanDeTonte(pelouseControl, Collections.singletonList(tondeuseCommande)));
 
             String positionsTondeuse = tondreRunner.runTousProgrammesTondeuses();
@@ -105,7 +106,7 @@ class TondreRunnerTest {
         void given_tondeuse_orientation_sud_when_tondeuse_rotation_droite_then_tondeuse_pointe_ouest() {
             Pelouse pelouse = new Pelouse(1, 1);
             PelouseControl pelouseControl = new PelouseControl(pelouse);
-            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.SOUTH, Instruction.DROITE);
+            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.SOUTH, Collections.singletonList(Instruction.DROITE));
             TondreRunner tondreRunner = new TondreRunner(() -> new PlanDeTonte(pelouseControl, Collections.singletonList(tondeuseCommande)));
 
             String positionsTondeuse = tondreRunner.runTousProgrammesTondeuses();
@@ -117,7 +118,7 @@ class TondreRunnerTest {
         void given_tondeuse_orientation_ouest_when_tondeuse_rotation_droite_then_tondeuse_pointe_nord() {
             Pelouse pelouse = new Pelouse(1, 1);
             PelouseControl pelouseControl = new PelouseControl(pelouse);
-            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.WEST, Instruction.DROITE);
+            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.WEST, Collections.singletonList(Instruction.DROITE));
             TondreRunner tondreRunner = new TondreRunner(() -> new PlanDeTonte(pelouseControl, Collections.singletonList(tondeuseCommande)));
 
             String positionsTondeuse = tondreRunner.runTousProgrammesTondeuses();
@@ -126,10 +127,11 @@ class TondreRunnerTest {
         }
 
         @Test
-        void given_tondeuse_orientation_nord_when_tondeuse_rotation_droite_et_droite_then_tondeuse_pointe_sud() {
+        void given_tondeuse_orientation_nord_when_tondeuse_rotation_droite_2_fois_then_tondeuse_pointe_sud() {
             Pelouse pelouse = new Pelouse(1, 1);
             PelouseControl pelouseControl = new PelouseControl(pelouse);
-            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.NORTH, Instruction.DROITE, Instruction.DROITE);
+            List<Instruction> droiteTwice = List.of(Instruction.DROITE, Instruction.DROITE);
+            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.NORTH, droiteTwice);
             TondreRunner tondreRunner = new TondreRunner(() -> new PlanDeTonte(pelouseControl, Collections.singletonList(tondeuseCommande)));
 
             String positionsTondeuse = tondreRunner.runTousProgrammesTondeuses();
@@ -141,7 +143,8 @@ class TondreRunnerTest {
         void given_tondeuse_orientation_nord_when_tondeuse_rotation_droite_et_gauche_then_tondeuse_pointe_nord() {
             Pelouse pelouse = new Pelouse(1, 1);
             PelouseControl pelouseControl = new PelouseControl(pelouse);
-            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.NORTH, Instruction.DROITE, Instruction.GAUCHE);
+            List<Instruction> droiteGauche = List.of(Instruction.DROITE, Instruction.GAUCHE);
+            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.NORTH, droiteGauche);
             TondreRunner tondreRunner = new TondreRunner(() -> new PlanDeTonte(pelouseControl, Collections.singletonList(tondeuseCommande)));
 
             String positionsTondeuse = tondreRunner.runTousProgrammesTondeuses();
@@ -153,8 +156,8 @@ class TondreRunnerTest {
         void given_deux_tondeuses_orientation_nord_et_sud_when_rotation_droite_et_gauche_then_pointe_est() {
             Pelouse pelouse = new Pelouse(1, 1);
             PelouseControl pelouseControl = new PelouseControl(pelouse);
-            TondeuseCommande tondeuseProgram1 = new TondeuseCommande(new Position(0, 0), Orientation.NORTH, Instruction.DROITE);
-            TondeuseCommande tondeuseProgram2 = new TondeuseCommande(new Position(0, 0), Orientation.SOUTH, Instruction.GAUCHE);
+            TondeuseCommande tondeuseProgram1 = new TondeuseCommande(new Position(0, 0), Orientation.NORTH, Collections.singletonList(Instruction.DROITE));
+            TondeuseCommande tondeuseProgram2 = new TondeuseCommande(new Position(0, 0), Orientation.SOUTH, Collections.singletonList(Instruction.GAUCHE));
             TondreRunner tondreRunner = new TondreRunner(() -> new PlanDeTonte(pelouseControl, Arrays.asList(tondeuseProgram1, tondeuseProgram2)));
 
             String positionsTondeuse = tondreRunner.runTousProgrammesTondeuses();
@@ -171,7 +174,7 @@ class TondreRunnerTest {
         void given_tondeuse_sur_1_1_orientation_nord_when_avancer_then_tondeuse_est_sur_1_2_nord() {
             Pelouse pelouse = new Pelouse(2, 2);
             PelouseControl pelouseControl = new PelouseControl(pelouse);
-            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(1, 1), Orientation.NORTH, Instruction.AVANCER);
+            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(1, 1), Orientation.NORTH, Collections.singletonList(Instruction.AVANCER));
             TondreRunner tondreRunner = new TondreRunner(() -> new PlanDeTonte(pelouseControl, Collections.singletonList(tondeuseCommande)));
 
             String positionsTondeuse = tondreRunner.runTousProgrammesTondeuses();
@@ -183,7 +186,7 @@ class TondreRunnerTest {
         void given_tondeuse_sur_1_1_orientation_est_when_tondeuse_avance_then_tondeuse_est_sur_2_1_est() {
             Pelouse pelouse = new Pelouse(2, 2);
             PelouseControl pelouseControl = new PelouseControl(pelouse);
-            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(1, 1), Orientation.EAST, Instruction.AVANCER);
+            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(1, 1), Orientation.EAST, Collections.singletonList(Instruction.AVANCER));
             TondreRunner tondreRunner = new TondreRunner(() -> new PlanDeTonte(pelouseControl, Collections.singletonList(tondeuseCommande)));
 
             String positionsTondeuse = tondreRunner.runTousProgrammesTondeuses();
@@ -195,7 +198,7 @@ class TondreRunnerTest {
         void given_tondeuse_sur_1_1_orientation_sud_when_tondeuse_avance_then_tondeuse_est_sur_1_0_sud() {
             Pelouse pelouse = new Pelouse(2, 2);
             PelouseControl pelouseControl = new PelouseControl(pelouse);
-            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(1, 1), Orientation.SOUTH, Instruction.AVANCER);
+            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(1, 1), Orientation.SOUTH, Collections.singletonList(Instruction.AVANCER));
             TondreRunner tondreRunner = new TondreRunner(() -> new PlanDeTonte(pelouseControl, Collections.singletonList(tondeuseCommande)));
 
             String positionsTondeuse = tondreRunner.runTousProgrammesTondeuses();
@@ -207,7 +210,7 @@ class TondreRunnerTest {
         void given_tondeuse_sur_1_1_orientation_ouest_when_tondeuse_avance_then_tondeuse_est_sur_0_1_ouest() {
             Pelouse pelouse = new Pelouse(2, 2);
             PelouseControl pelouseControl = new PelouseControl(pelouse);
-            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(1, 1), Orientation.WEST, Instruction.AVANCER);
+            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(1, 1), Orientation.WEST, Collections.singletonList(Instruction.AVANCER));
             TondreRunner tondreRunner = new TondreRunner(() -> new PlanDeTonte(pelouseControl, Collections.singletonList(tondeuseCommande)));
 
             String positionsTondeuse = tondreRunner.runTousProgrammesTondeuses();
@@ -216,10 +219,11 @@ class TondreRunnerTest {
         }
 
         @Test
-        void given_tondeuse_sur_0_0_orientation_est_when_tondeuse_avance_twice_then_tondeuse_est_sur_0_2_est() {
+        void given_tondeuse_sur_0_0_orientation_est_when_tondeuse_avance_2_fois_then_tondeuse_est_sur_0_2_est() {
             Pelouse pelouse = new Pelouse(2, 2);
             PelouseControl pelouseControl = new PelouseControl(pelouse);
-            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.EAST, Instruction.AVANCER, Instruction.AVANCER);
+            List<Instruction> avancerTwice = List.of(Instruction.AVANCER, Instruction.AVANCER);
+            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.EAST, avancerTwice);
             TondreRunner tondreRunner = new TondreRunner(() -> new PlanDeTonte(pelouseControl, Collections.singletonList(tondeuseCommande)));
 
             String positionsTondeuse = tondreRunner.runTousProgrammesTondeuses();
@@ -231,8 +235,8 @@ class TondreRunnerTest {
         void given_a_tondeuse_sur_0_0_est_2_2_sud_when_avance_then_sont_sur_0_2_est_et_2_1_sud() {
             Pelouse pelouse = new Pelouse(2, 2);
             PelouseControl pelouseControl = new PelouseControl(pelouse);
-            TondeuseCommande tondeuseProgram1 = new TondeuseCommande(new Position(0, 0), Orientation.EAST, Instruction.AVANCER);
-            TondeuseCommande tondeuseProgram2 = new TondeuseCommande(new Position(2, 2), Orientation.SOUTH, Instruction.AVANCER);
+            TondeuseCommande tondeuseProgram1 = new TondeuseCommande(new Position(0, 0), Orientation.EAST, Collections.singletonList(Instruction.AVANCER));
+            TondeuseCommande tondeuseProgram2 = new TondeuseCommande(new Position(2, 2), Orientation.SOUTH, Collections.singletonList(Instruction.AVANCER));
             TondreRunner tondreRunner = new TondreRunner(() -> new PlanDeTonte(pelouseControl, Arrays.asList(tondeuseProgram1, tondeuseProgram2)));
 
             String positionsTondeuse = tondreRunner.runTousProgrammesTondeuses();
@@ -249,7 +253,7 @@ class TondreRunnerTest {
         void given_tondeuse_sur_0_0_orientation_nord_when_tondeuse_avance_then_tondeuse_est_sur_0_0_nord() {
             Pelouse pelouse = new Pelouse(0, 0);
             PelouseControl pelouseControl = new PelouseControl(pelouse);
-            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.NORTH, Instruction.AVANCER);
+            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.NORTH, Collections.singletonList(Instruction.AVANCER));
             TondreRunner tondreRunner = new TondreRunner(() -> new PlanDeTonte(pelouseControl, Collections.singletonList(tondeuseCommande)));
 
             String positionsTondeuse = tondreRunner.runTousProgrammesTondeuses();
@@ -261,7 +265,7 @@ class TondreRunnerTest {
         void given_tondeuse_sur_0_0_orientation_est_when_tondeuse_avance_then_tondeuse_est_sur_0_0_est() {
             Pelouse pelouse = new Pelouse(0, 0);
             PelouseControl pelouseControl = new PelouseControl(pelouse);
-            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.EAST, Instruction.AVANCER);
+            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.EAST, Collections.singletonList(Instruction.AVANCER));
             TondreRunner tondreRunner = new TondreRunner(() -> new PlanDeTonte(pelouseControl, Collections.singletonList(tondeuseCommande)));
 
             String positionsTondeuse = tondreRunner.runTousProgrammesTondeuses();
@@ -273,7 +277,7 @@ class TondreRunnerTest {
         void given_tondeuse_sur_0_0_orientation_sud_when_tondeuse_avance_then_tondeuse_est_sur_0_0_sud() {
             Pelouse pelouse = new Pelouse(0, 0);
             PelouseControl pelouseControl = new PelouseControl(pelouse);
-            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.SOUTH, Instruction.AVANCER);
+            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.SOUTH, Collections.singletonList(Instruction.AVANCER));
             TondreRunner tondreRunner = new TondreRunner(() -> new PlanDeTonte(pelouseControl, Collections.singletonList(tondeuseCommande)));
 
             String positionsTondeuse = tondreRunner.runTousProgrammesTondeuses();
@@ -285,7 +289,7 @@ class TondreRunnerTest {
         void given_tondeuse_sur_0_0_orientation_ouest_when_tondeuse_avance_then_tondeuse_est_sur_0_0_ouest() {
             Pelouse pelouse = new Pelouse(0, 0);
             PelouseControl pelouseControl = new PelouseControl(pelouse);
-            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.WEST, Instruction.AVANCER);
+            TondeuseCommande tondeuseCommande = new TondeuseCommande(new Position(0, 0), Orientation.WEST, Collections.singletonList(Instruction.AVANCER));
             TondreRunner tondreRunner = new TondreRunner(() -> new PlanDeTonte(pelouseControl, Collections.singletonList(tondeuseCommande)));
 
             String positionsTondeuse = tondreRunner.runTousProgrammesTondeuses();
@@ -303,8 +307,10 @@ class TondreRunnerTest {
         void given_instructions_completes_execution_complete_then_tondeuses_sont_sur_1_3_nord_et_5_1_est() {
             Pelouse pelouse = new Pelouse(5, 5);
             PelouseControl pelouseControl = new PelouseControl(pelouse);
-            TondeuseCommande tondeuseProgram1 = new TondeuseCommande(new Position(1, 2), Orientation.NORTH, Instruction.GAUCHE, Instruction.AVANCER, Instruction.GAUCHE, Instruction.AVANCER, Instruction.GAUCHE, Instruction.AVANCER, Instruction.GAUCHE, Instruction.AVANCER, Instruction.AVANCER);
-            TondeuseCommande tondeuseProgram2 = new TondeuseCommande(new Position(3, 3), Orientation.EAST, Instruction.AVANCER, Instruction.AVANCER, Instruction.DROITE, Instruction.AVANCER, Instruction.AVANCER, Instruction.DROITE, Instruction.AVANCER, Instruction.DROITE, Instruction.DROITE, Instruction.AVANCER);
+            List<Instruction> instructionList1 = List.of(Instruction.GAUCHE, Instruction.AVANCER, Instruction.GAUCHE, Instruction.AVANCER, Instruction.GAUCHE, Instruction.AVANCER, Instruction.GAUCHE,Instruction.AVANCER, Instruction.AVANCER);
+            List<Instruction> instructionList2 = List.of(Instruction.AVANCER, Instruction.AVANCER, Instruction.DROITE, Instruction.AVANCER, Instruction.AVANCER, Instruction.DROITE, Instruction.AVANCER, Instruction.DROITE, Instruction.DROITE, Instruction.AVANCER);
+            TondeuseCommande tondeuseProgram1 = new TondeuseCommande(new Position(1, 2), Orientation.NORTH, instructionList1);
+            TondeuseCommande tondeuseProgram2 = new TondeuseCommande(new Position(3, 3), Orientation.EAST,instructionList2);
             TondreRunner tondreRunner = new TondreRunner(() -> new PlanDeTonte(pelouseControl, Arrays.asList(tondeuseProgram1, tondeuseProgram2)));
 
             String positionsTondeuse = tondreRunner.runTousProgrammesTondeuses();
@@ -320,7 +326,7 @@ class TondreRunnerTest {
 
         @Test
         void given_multiples_commandes_when_lire_fichier_then_ok() {
-            TondreRunner tondreRunner = new TondreRunner(new TondreFromFile( PATH + "commandes_multiples.txt"));
+            TondreRunner tondreRunner = new TondreRunner(new TondreFromFile(PATH + "commandes_multiples.txt"));
 
             String positionsTondeuse = tondreRunner.runTousProgrammesTondeuses();
 
@@ -329,7 +335,7 @@ class TondreRunnerTest {
 
         @Test
         void given_aucun_fichier_when_lire_fichier_then_erreur() {
-            TondreRunner tondreRunner = new TondreRunner(new TondreFromFile( PATH + "does_not_exists.txt"));
+            TondreRunner tondreRunner = new TondreRunner(new TondreFromFile(PATH + "does_not_exists.txt"));
 
             assertThatThrownBy(tondreRunner::runTousProgrammesTondeuses)
                     .isInstanceOf(TondeuseException.class)
@@ -338,7 +344,7 @@ class TondreRunnerTest {
 
         @Test
         void given_fichier_vide_when_lire_fichier_then_erreur() {
-            TondreRunner tondreRunner = new TondreRunner(new TondreFromFile( PATH + "fichier_vide.txt"));
+            TondreRunner tondreRunner = new TondreRunner(new TondreFromFile(PATH + "fichier_vide.txt"));
 
             assertThatThrownBy(tondreRunner::runTousProgrammesTondeuses)
                     .isInstanceOf(InvalidFileDataException.class)
@@ -347,7 +353,7 @@ class TondreRunnerTest {
 
         @Test
         void given_tondeuse_erreur_parssing_partielle_when_lire_fichier_then_erreur() {
-            TondreRunner tondreRunner = new TondreRunner(new TondreFromFile( PATH + "erreur_parsing_partielle.txt"));
+            TondreRunner tondreRunner = new TondreRunner(new TondreFromFile(PATH + "erreur_parsing_partielle.txt"));
 
             assertThatThrownBy(tondreRunner::runTousProgrammesTondeuses)
                     .isInstanceOf(InvalidFileDataException.class)
@@ -356,7 +362,7 @@ class TondreRunnerTest {
 
         @Test
         void given_tondeuse_palouse_parse_erreur_when_lire_fichier_then_erreur() {
-            TondreRunner tondreRunner = new TondreRunner(new TondreFromFile( PATH + "pelouse_erreur_parsing.txt"));
+            TondreRunner tondreRunner = new TondreRunner(new TondreFromFile(PATH + "pelouse_erreur_parsing.txt"));
 
             assertThatThrownBy(tondreRunner::runTousProgrammesTondeuses)
                     .isInstanceOf(InvalidFileDataException.class)
@@ -365,7 +371,7 @@ class TondreRunnerTest {
 
         @Test
         void given_tondeuse_position_parse_erreur_when_lire_fichier_then_erreur() {
-            TondreRunner tondreRunner = new TondreRunner(new TondreFromFile( PATH + "position_erreur_parsing.txt"));
+            TondreRunner tondreRunner = new TondreRunner(new TondreFromFile(PATH + "position_erreur_parsing.txt"));
 
             assertThatThrownBy(tondreRunner::runTousProgrammesTondeuses)
                     .isInstanceOf(TondeuseException.class)
@@ -374,7 +380,7 @@ class TondreRunnerTest {
 
         @Test
         void given_tondeuse_orientation_parse_erreur_when_lire_fichier_then_erreur() {
-            TondreRunner tondreRunner = new TondreRunner(new TondreFromFile( PATH + "tondeuse_orientation_erreur_parsing.txt"));
+            TondreRunner tondreRunner = new TondreRunner(new TondreFromFile(PATH + "tondeuse_orientation_erreur_parsing.txt"));
 
             assertThatThrownBy(tondreRunner::runTousProgrammesTondeuses)
                     .isInstanceOf(TondeuseException.class);
@@ -382,7 +388,7 @@ class TondreRunnerTest {
 
         @Test
         void given_tondeuse_orientation_conversion_erreur_when_lire_fichier_then_erreur() {
-            TondreRunner tondreRunner = new TondreRunner(new TondreFromFile( PATH + "tondeuse_commande_erreur_conversion.txt"));
+            TondreRunner tondreRunner = new TondreRunner(new TondreFromFile(PATH + "tondeuse_commande_erreur_conversion.txt"));
 
             assertThatThrownBy(tondreRunner::runTousProgrammesTondeuses)
                     .isInstanceOf(TondeuseException.class);
@@ -390,7 +396,7 @@ class TondreRunnerTest {
 
         @Test
         void given_tondeuse_command_parse_erreur_when_lire_fichier_then_erreur() {
-            TondreRunner tondreRunner = new TondreRunner(new TondreFromFile( PATH + "tondeuse_commande_erreur_parsing.txt"));
+            TondreRunner tondreRunner = new TondreRunner(new TondreFromFile(PATH + "tondeuse_commande_erreur_parsing.txt"));
 
             assertThatThrownBy(tondreRunner::runTousProgrammesTondeuses)
                     .isInstanceOf(TondeuseException.class)
@@ -399,7 +405,7 @@ class TondreRunnerTest {
 
         @Test
         void given_tondeuse_commande_erreur_when_lire_fichier_then_erreur() {
-            TondreRunner tondreRunner = new TondreRunner(new TondreFromFile( PATH + "tondeuse_commande_erreur_conversion.txt"));
+            TondreRunner tondreRunner = new TondreRunner(new TondreFromFile(PATH + "tondeuse_commande_erreur_conversion.txt"));
 
             assertThatThrownBy(tondreRunner::runTousProgrammesTondeuses)
                     .isInstanceOf(TondeuseException.class)
@@ -408,7 +414,7 @@ class TondreRunnerTest {
 
         @Test
         void given_tondeuse_position_dehors_palouse_when_lire_fichier_then_erreur() {
-            TondreRunner tondreRunner = new TondreRunner(new TondreFromFile( PATH + "position_dehors_pelouse.txt"));
+            TondreRunner tondreRunner = new TondreRunner(new TondreFromFile(PATH + "position_dehors_pelouse.txt"));
 
             assertThatThrownBy(tondreRunner::runTousProgrammesTondeuses)
                     .isInstanceOf(OutOfBoundsPositionException.class)
